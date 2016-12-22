@@ -65,9 +65,11 @@ int main(void) {
 	// Print results
 	printf("GPU pi calculated in %f s.\n", (stop-start)/(float)CLOCKS_PER_SEC);	
 	printf("CPU pi calculated in %f s.\n", (stop-start)/(float)CLOCKS_PER_SEC);
-	
-	printf("CUDA estimate of PI = %f [error of %f]\n", pi_gpu, pi_gpu - PI);
+	#ifdef DP
+	printf("GPU estimate of PI = %20.18f [error of %20.18f]\n", pi_gpu, pi_gpu - PI);
+	#else	
 	printf("CPU estimate of PI = %f [error of %f]\n", pi_cpu, pi_cpu - PI);	
+	#endif	
 	//printf("PI = %f\n",pi);
 
 	// Cleanup
