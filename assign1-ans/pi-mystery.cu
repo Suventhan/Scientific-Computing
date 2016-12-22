@@ -25,7 +25,7 @@ Real pi_gpu = 0;
 Real pi_cpu = 0;
 
 // Kernel that executes on the CUDA device
-__global__ void cal_pi(float *sum, int nbin, float step, int nthreads, int nblocks) {
+__global__ void cal_pi(Real *sum, int nbin, Real step, int nthreads, int nblocks) {
 	int i;
 	Real x;
 	int idx = blockIdx.x*blockDim.x+threadIdx.x;  // Sequential thread index across the blocks
