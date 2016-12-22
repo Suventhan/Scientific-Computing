@@ -10,6 +10,18 @@
 #define NUM_BLOCK  256  // Number of thread blocks
 #define NUM_THREAD  256  // Number of threads per block
 #define NBIN 268435456
+
+// #define NBIN TRIALS_PER_THREAD*NUM_THREAD*NUM_BLOCK  // Number of bins 4096*256*256
+// 
+// // 2^28
+#define NBIN 268435456  // Number of bins 4096*256*256
+
+// // 2^26
+// #define NBIN 67108864  // Number of bins 1024*256*256
+
+// 2^24
+// #define NBIN 16777216  // Number of bins 256*256*256
+
 int tid;
 
 
@@ -45,7 +57,7 @@ int main(void) {
 	printf("# of trials per thread = %d, # of blocks = %d, # of threads/block = %d\n",TRIALS_PER_THREAD,NUM_BLOCK,NUM_THREAD);
 
 	Real step = 1.0/NBIN;  // Step size
-	size_t size = NUM_BLOCK*NUM_THREAD*sizeof(float);  //Array memory size
+	size_t size = NUM_BLOCK*NUM_THREAD*sizeof(Real);  //Array memory size
 	sumHost = (Real *)malloc(size);  //  Allocate array on host
 	
 	start = clock();	
@@ -68,7 +80,7 @@ int main(void) {
 	#ifdef DP
 	printf("GPU estimate of PI = %20.18f [error of %20.18f]\n", pi_gpu, pi_gpu - PI);
 	#else	
-	printf("CPU estimate of PI = %f [error of %f]\n", pi_cpu, pi_cpu - PI);	
+	printf("GPU estimate of PI = %f [error of %f]\n", pi_gpu, pi_gpu - PI);	
 	#endif	
 	//printf("PI = %f\n",pi);
 
