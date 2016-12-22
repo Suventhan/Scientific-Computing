@@ -6,6 +6,7 @@
 #include <cuda.h>
 #include <time.h>
 
+#define TRIALS_PER_THREAD 4096
 #define NUM_BLOCK  256  // Number of thread blocks
 #define NUM_THREAD  256  // Number of threads per block
 #define NBIN 268435456
@@ -40,6 +41,8 @@ int main(void) {
 	dim3 dimGrid(NUM_BLOCK,1,1);  // Grid dimensions
 	dim3 dimBlock(NUM_THREAD,1,1);  // Block dimensions
 	Real *sumHost, *sumDev;  // Pointer to host & device arrays
+
+	printf("# of trials per thread = %d, # of blocks = %d, # of threads/block = %d\n",TRIALS_PER_THREAD,NUM_BLOCK,NUM_THREAD);
 
 	Real step = 1.0/NBIN;  // Step size
 	size_t size = NUM_BLOCK*NUM_THREAD*sizeof(float);  //Array memory size
