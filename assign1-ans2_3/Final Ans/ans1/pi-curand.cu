@@ -78,17 +78,19 @@ int main (int argc, char *argv[]) {
 	stop = clock();
 	printf("GPU pi calculated in %f s.\n", (stop-start)/(float)CLOCKS_PER_SEC);
 	start = clock();
-	Real x,y;								//loop counter
+	Real x,y,z;								//loop counter
   long points_in_circle = 0;							//Count holds all the number of how many good coordinates
 	Real omp_pi = 0.f;							//holds approx value of pi
 
-	#pragma omp parallel firstprivate(x, y, i) reduction(+:points_in_circle) num_threads(total_threads)
+	#pragma omp parallel firstprivate(x, y, z, i) reduction(+:points_in_circle) num_threads(total_threads)
 	{
 		for (long i = 0; i < total_tasks; ++i)					//main loop
 		{
 			x = rand() / (Real) RAND_MAX;
 			y = rand() / (Real) RAND_MAX;
-			points_in_circle += (x*x + y*y <= 1.0f);
+			z = (x*x + y*y)
+			if(z <= 1)
+				points_in_circle++;
 		}
 	}
 	omp_pi = 4.0f * points_in_circle / total_tasks;
