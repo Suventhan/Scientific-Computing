@@ -1,0 +1,57 @@
+Compile and Run the Program Using these Commands
+------------------------------------------------------------------------
+
+1.pi-mystery.cu
+
+Single precision :
+
+Compile	: nvcc -O3 pi-mystery.cu
+Run	: ./a.out
+
+Double precision :
+
+Compile	: nvcc -O3 -D DP pi-mystery.cu
+Run	: ./a.out
+
+------------------------------------------------------------------------
+2.pi-currand.cu
+  ============
+
+Single precision :
+
+Compile	: nvcc -O3 -Xcompiler -fopenmp -lgomp pi-curand.cu
+Run	: ./a.out <No of Threads>
+
+Double precision :
+
+Compile	: nvcc -O3 -D DP -Xcompiler -fopenmp -lgomp pi-curand.cu
+Run	: ./a.out <No of Threads>
+
+------------------------------------------------------------------------
+3.pi-myrand.cu
+
+Single precision :
+
+Compile	: nvcc -O3 pi-myrand.cu
+Run	: ./a.out
+
+Double precision :
+
+Compile	: nvcc -O3 -D DP pi-myrand.cu
+Run	: ./a.out
+
+------------------------------------------------------------------------
+4.pi-curand-thrust.cu
+
+Single precision :
+
+Compile	: nvcc -O3 pi-curand-thrust.cu
+Run	: ./a.out
+
+Double precision :
+
+Compile	: nvcc -O3 -D DP pi-curand-thrust.cu
+Run	: ./a.out
+
+------------------------------------------------------------------------
+

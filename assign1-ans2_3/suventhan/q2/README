@@ -1,0 +1,20 @@
+Compile and Run the Program Using these Commands
+------------------------------------------------------------------------
+
+Single precision :
+
+Compile	: nvcc -O3 -Xcompiler -fopenmp -lgomp q2.cu
+
+Run	: Sequential 	:./a.out -s
+	  CPU Parallel	:./a.out -p <No of Threads>
+	  GPU Parallel	:./a.out -c
+
+Double precision :
+
+Compile	: nvcc -O3 -D DP -Xcompiler -fopenmp -lgomp q2.cu
+Run	: Sequential 	:./a.out -s
+	  CPU Parallel	:./a.out -p <No of Threads>
+	  GPU Parallel	:./a.out -c
+
+For the verification part you need to add '-v' at the end of the run command.
+
